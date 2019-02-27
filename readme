@@ -1,0 +1,4 @@
+Please follow the following steps to run this project
+import project as Maven project in eclipse
+After project is created in eclipse, right click on pom.xml run maven clean, maven install to download all the dependencies.
+To run the test, right click on the testng.xml and run test
