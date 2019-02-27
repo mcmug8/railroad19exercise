@@ -1,8 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="RailRoad19 Tests" preserve-order="false" parallel="classes" thread-count="3">
-   <parameter name="url" value="http://localhost:4200"></parameter>
-   <parameter name="browser" value="firefox"></parameter>
+   
     <test name="RailRoad19 Regression"  preserve-order="true">   
+    <parameter name="url" value="http://localhost:4200"></parameter>
+   <parameter name="browser" value="firefox"></parameter>
 	<classes>
 	      <class name="railroad19exericse.railroad19exericse.ProjectDashboardTests"></class>
        	</classes>

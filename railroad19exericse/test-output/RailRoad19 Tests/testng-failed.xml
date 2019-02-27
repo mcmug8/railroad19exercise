@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="classes" name="Failed suite [RailRoad19 Tests]">
+  <parameter name="browser" value="firefox"/>
+  <parameter name="url" value="http://localhost:4200"/>
+  <test parallel="classes" name="RailRoad19 Regression(failed)">
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="http://localhost:4200"/>
+    <classes>
+      <class name="railroad19exericse.railroad19exericse.ProjectDashboardTests">
+        <methods>
+          <include name="ProjectStatusWorkingTest"/>
+          <include name="ProjectStatusArchivedTest"/>
+          <include name="ProjectStatusNewTest"/>
+          <include name="init"/>
+          <include name="TearDown"/>
+          <include name="ProjectStatusDeliveredTest"/>
+        </methods>
+      </class> <!-- railroad19exericse.railroad19exericse.ProjectDashboardTests -->
+    </classes>
+  </test> <!-- RailRoad19 Regression(failed) -->
+</suite> <!-- Failed suite [RailRoad19 Tests] -->

@@ -16,6 +16,12 @@ public class ProjectDashboardPage {
 	}
 	
 	
+	public List<WebElement> findProjectCard(){
+		WebElement projectCardElement = driver.findElement(By.className("dashboard__projects"));
+		List<WebElement> projectElements = projectCardElement.findElements(By.className("ng-star-inserted"));
+		return projectElements;
+	}
+	
 	public List<WebElement> getProjectStatusElement(){
 		
 		WebElement statusElement = driver.findElement(By.className("stats__status"));
@@ -40,6 +46,19 @@ public class ProjectDashboardPage {
 		return projectOwnerElements;
 	}
 	
-	
+	public int getProjectCount(List<WebElement> el, String projectStatus) {
+		
+		int num = 0;
+		
+		for(WebElement e:el) {
+			String status = e.findElement(By.className("stats__statusName")).getText();
+			if(status.equalsIgnoreCase(projectStatus)) {
+				num =Integer.parseInt( e.findElement(By.className("stats__statusCount")).getText());
+			}
+		}
+		
+		return num;
+		
+	}
 
 }

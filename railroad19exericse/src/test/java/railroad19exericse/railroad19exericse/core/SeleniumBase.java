@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.logging.LoggingPreferences;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -76,5 +78,28 @@ public abstract class SeleniumBase {
 		return driver;
 	}
 
+	public void waitForPjax(WebDriver driver) {
+		//
+		final JavascriptExecutor executor= (JavascriptExecutor)driver;
+		ExpectedCondition<Boolean> pageLoadCondition = new
+		ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return (executor.executeScript("NProgress.status").equals("null"));
+			}};
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(pageLoadCondition);
+	}
 	
+	public void waitForDocumentReadyState(WebDriver driver) {
+		//
+		final JavascriptExecutor executor= (JavascriptExecutor)driver;
+		ExpectedCondition<Boolean> pageLoadCondition = new
+		ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return (executor.executeScript("return document.readyState").equals("complete"));
+			}};
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			wait.until(pageLoadCondition);
+	}
+
 }
